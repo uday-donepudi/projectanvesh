@@ -1,0 +1,129 @@
+html,body{
+    margin: 0;
+}
+.header{
+    text-align: center;
+    background-color: brown;
+    padding: 10px;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    margin: 5px;
+    
+}
+.res{
+    background-color: #c4dff1;
+    box-shadow: 5px 5px 5px #f0f0f0;
+    flex: 1;
+    
+}
+table,td{
+    border: 1px solid;
+    border-collapse: collapse;
+    text-align: center;
+    
+}
+table{
+    width: 100%;
+    height: 100%;
+}
+td{
+    padding: 5px;
+}
+.msg{
+    background-color: brown;
+    display: grid;
+    grid-template-rows: 1fr 6fr;
+    box-shadow: 5px 5px 5px #f0f0f0;
+    flex: 1;
+    
+}
+.bar{
+    box-shadow: 5px 5px 5px #f0f0f0;
+    display: flex;
+    flex: 1;
+    text-align: center;
+   
+}
+.vertical-bar {
+    width: 30%; /* Adjust width of the bar */
+   height: 500px; /* Adjust height of the bar */
+    background-color: white; /* Background color of the bar */
+    position: relative;
+}
+
+.level {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.level1, .level2, .level3 {
+    background-color: red; /* Default color of the levels */
+}
+
+.level1 {
+    height: 0%;
+}
+
+.level2 {
+    height: 0%;
+}
+
+.level3 {
+    height: 0%;
+}
+.notice{
+    display: block;
+}
+.noticemgs{
+    background-color: white;
+    text-align: center;
+    font-size: 300px;
+}
+p{
+    margin: 0%;
+}
+.loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    margin: auto;
+    margin-top: 20%;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.des{
+    display: flex;
+    
+    align-items: center;
+    background-color: #f3e7e7;
+    flex: 1;
+    padding: 20px;
+    font-size: 30px;
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    /* Your CSS styles for screen size of 790px */
+    /* For example: */
+    body {
+        font-size: 16px;
+    }
+}
+@media only screen and (max-width: 767px) {
+    /* Your CSS styles for screen sizes less than 768px */
+    /* For example: */
+   .main{
+    flex-direction: row-reverse;
+   }
+}

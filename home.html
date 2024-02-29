@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Firebase</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            PROJECT-ANVESH
+        </div>
+    
+        <div class="main">
+            <div class="res">
+                <table>
+                    <tr>
+                        <td>Sensor</td>
+                        <td>value</td>
+                    </tr>
+                    <tr>
+                        <td>Sensor</td>
+                        <td>value</td>
+                    </tr>
+                    <tr>
+                        <td>Sensor</td>
+                        <td>value</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="bar">
+                <div class="vertical-bar">
+                    <div class="level level1"></div>
+                    <div class="level level2"></div>
+                    <div class="level level3"></div>
+                </div>
+                <div class="des">
+                    <div id="desmsg"></div>
+                </div>
+            </div>
+            <div class="msg">
+                <div class="notice"></div>
+                <div class="noticemgs">
+                    <p id="msgp"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="form.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+        import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-database.js";
+        
+        // Paste the code from Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyAItGa7IH6ALB6OPQxKywG5mAUEkt7WWYU",
+            authDomain: "pavan-8608c.firebaseapp.com",
+            databaseURL: "https://pavan-8608c-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "pavan-8608c",
+            storageBucket: "pavan-8608c.appspot.com",
+            messagingSenderId: "792819386500",
+            appId: "1:792819386500:web:7d91cd9f3df9dfe8c39ad1",
+            measurementId: "G-533F6Z2XSW"
+        };
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig); // Log successful initialization
+        
+        const db = getDatabase(app);
+            
+
+        document.addEventListener("DOMContentLoaded", function() {
+    // Get level elements
+    var levels = document.querySelectorAll(".level");
+    var percent;
+    var prevalue;
+
+
+    const dbRef = ref(getDatabase(app));
+    get(dbRef).then((snapshot) => {
+        if (snapshot.exists()) {
+            const data = snapshot.val();
+            const color = data.sensors.color;
+            const intensity = data.sensors.intensity;
+            const metal = data.sensors.metal;
+            var avg=(color+intensity+metal)/3;
+
+            percent=80;
+            fillLevels(percent);
+        } else {
+            console.log("No data available");
+        }
+    }).catch((error) => {
+        console.error("Error in myfun():", error); // Log error
+    });
+
+
+
+
+    function fillLevels(value) {
+        // Reset levels
+        levels.forEach(function(level, index) {// Set default level names
+            level.style.height = "0%"; // Reset level filling
+        });
+
+        // Fill levels based on value
+        for (var i = 0; i < 3; i++) {
+            // Set filled level names
+            levels[i].style.height = value.toString()+"%"; // Set level filling to 100%
+            if(levels[i].style.height<="30%")
+            {
+                levels[i].textContent = "GOOD";
+            }
+            else if(levels[i].style.height<="60%")
+            {
+                levels[i].textContent = "OK";
+            }
+            else
+            {
+                levels[i].textContent = "BAD";
+            }
+            
+        }
+        if(levels[0].style.height<="30%")
+            {
+                document.getElementById("msgp").innerHTML = "&#128525;";
+                document.getElementById("desmsg").innerHTML = "Great job! You've got very little plastic around, which is super for the environment!";
+                document.querySelector(".level1").style.backgroundColor = "green";
+                document.querySelector(".level2").style.backgroundColor = "green";
+                document.querySelector(".level3").style.backgroundColor = "green";
+            }
+            else if(levels[0].style.height<="60%")
+            {
+                document.getElementById("msgp").innerHTML = "&#128522;";
+                document.getElementById("desmsg").innerHTML = "Not bad! There's some plastic, but it's not too much. Keep going!";
+                document.querySelector(".level1").style.backgroundColor = "yellow";
+                document.querySelector(".level2").style.backgroundColor = "yellow";
+                document.querySelector(".level3").style.backgroundColor = "yellow";
+            }
+            else
+            {
+                document.getElementById("msgp").innerHTML = "&#128544;";
+                document.getElementById("desmsg").innerHTML = "Uh-oh! There's a lot of plastic here, but don't worry, we can fix it together!";
+            }
+    }
+
+    // Example usage
+    
+
+
+   
+
+});
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
