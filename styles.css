@@ -10,7 +10,7 @@ html,body{
 }
 .main{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     column-gap: 10px;
     margin: 5px;
     
