@@ -79,7 +79,7 @@
     get(dbRef).then((snapshot) => {
         if (snapshot.exists()) {
             const data = snapshot.val();
-            const color = data.sensors.color;
+            const color = data.color;
             
 
             percent=color;
