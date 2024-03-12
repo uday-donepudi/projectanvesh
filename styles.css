@@ -114,7 +114,7 @@ p{
     font-size: 30px;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 650px) {
     .main {
       flex-direction: column;
     }
