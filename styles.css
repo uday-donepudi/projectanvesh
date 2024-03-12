@@ -10,7 +10,7 @@ html,body{
 }
 .main{
     display: flex;
-    flex-direction: row;
+    flex-direction:row;
     column-gap: 10px;
     margin: 5px;
     
@@ -113,17 +113,9 @@ p{
     padding: 20px;
     font-size: 30px;
 }
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-    /* Your CSS styles for screen size of 790px */
-    /* For example: */
-    body {
-        font-size: 16px;
+
+@media (max-width: 750px) {
+    .main {
+      flex-direction: column;
     }
-}
-@media only screen and (max-width: 767px) {
-    /* Your CSS styles for screen sizes less than 768px */
-    /* For example: */
-   .main{
-    flex-direction: row-reverse;
-   }
-}
+  }
