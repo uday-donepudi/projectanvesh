@@ -51,7 +51,7 @@ td{
 }
 .vertical-bar {
     width: 30%; /* Adjust width of the bar */
-    height: 550px;
+    height: 600px;
     /* Adjust height of the bar */
     background-color: white; /* Background color of the bar */
     position: relative;
