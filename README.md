@@ -2,7 +2,6 @@
 
 ![Project Anvesh](https://img.shields.io/badge/Project-Anvesh-green?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
 
 ## 📋 Overview
